@@ -1,0 +1,14 @@
+{
+  "name": "p4b/ktnew-core",
+  "require": {
+    "php": ">=5.00"
+  },
+  "require-dev": {
+    "phalcon/ide-stubs": "3.2.*",
+    "apache/log4php": "2.3.*",
+    "phpunit/phpunit": "5.7.*"
+  },
+  "config": {
+    "preferred-install": "source"
+  }
+}

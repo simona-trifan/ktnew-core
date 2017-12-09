@@ -1,0 +1,8 @@
+vendor
+.idea
+.phalcon
+cache
+.coverage.xml
+logs
+!cache/.gitkeep
+/app/config/log4php.properties
