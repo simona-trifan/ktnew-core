@@ -1,0 +1,217 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Insurant API",
+        "version": "1.0.0"
+    },
+    "host": "localhost/phalcon-ms/src/public",
+    "basePath": "/v1/insurant",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/get/{insurantId}": {
+            "get": {
+                "tags": [
+                    "insurants"
+                ],
+                "summary": "Info for a specific insurant",
+                "operationId": "showInsurantById",
+                "parameters": [
+                    {
+                        "name": "insurantId",
+                        "in": "path",
+                        "description": "The id of the insurant to retrieve",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Expected response to a valid request",
+                        "schema": {
+                            "$ref": "#/definitions/Insurant"
+                        },
+                        "examples": {
+                            "insurant": {
+                                "id": 123,
+                                "firstname": "John",
+                                "lastname": "Doe",
+                                "gender": "m",
+                                "birthdate": "1985-02-13",
+                                "created": "2017-12-09 12:23:02",
+                                "updated": "2017-12-09 13:23:02"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Insurant not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "error": {
+                                "code": 404,
+                                "message": "Insurant not found"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "error": {
+                                "code": 400,
+                                "message": "Invalid ID supplied"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/add": {
+            "post": {
+                "description": "Creates a new insurant. Duplicates are allowed",
+                "operationId": "addInsurant",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "insurant",
+                        "in": "body",
+                        "description": "Insurant to add to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NewInsurant"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "pet response",
+                        "schema": {
+                            "$ref": "#/definitions/Insurant"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "message": {
+                    "description": "",
+                    "type": "string"
+                },
+                "code": {
+                    "description": "",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "type": "object"
+        },
+        "NewInsurant": {
+            "required": [
+                "firstname",
+                "lastname",
+                "gender"
+            ],
+            "properties": {
+                "firstname": {
+                    "description": "Firstname",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 2
+                },
+                "lastname": {
+                    "description": "Lastname",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 2
+                },
+                "gender": {
+                    "description": "Gender: m, f",
+                    "type": "string",
+                    "maxLength": 1
+                },
+                "birthdate": {
+                    "description": "Birthdate, Y-m-d format",
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "type": "object"
+        },
+        "Insurant": {
+            "required": [
+                "id",
+                "firstname",
+                "lastname",
+                "gender",
+                "birthday"
+            ],
+            "properties": {
+                "id": {
+                    "description": "Insurant unique ID",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "firstname": {
+                    "description": "Firstname",
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "lastname": {
+                    "description": "Lastname",
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "gender": {
+                    "description": "Gender: m, f",
+                    "type": "string",
+                    "maxLength": 1
+                },
+                "birthdate": {
+                    "description": "Birthdate, Y-m-d format",
+                    "type": "string",
+                    "format": "date"
+                },
+                "created": {
+                    "description": "Date and time when insurant was created, Y-m-d H:i:s format",
+                    "type": "string",
+                    "format": "dateTime"
+                },
+                "updated": {
+                    "description": "Date and time when insurant was last updated, Y-m-d H:i:s format",
+                    "type": "string",
+                    "format": "dateTime"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

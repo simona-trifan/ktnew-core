@@ -2,6 +2,8 @@ AddDefaultCharset UTF-8
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteCond $1 !^v1
+    RewriteCond $1 !^v2
+    RewriteCond $1 !^api-spec
+    RewriteRule (.*) http://phalcon.insurant.ms/v1/ [R=301,L]
 </IfModule>

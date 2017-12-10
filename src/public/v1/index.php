@@ -5,8 +5,8 @@ use Phalcon\Mvc\Micro;
 
 error_reporting(E_ALL);
 
-define('BASE_PATH', dirname(__DIR__));
-define('APP_PATH', BASE_PATH . '/app');
+define('BASE_PATH', dirname(dirname(__DIR__)));
+define('APP_PATH', BASE_PATH . '/app/v1');
 
 try {
 

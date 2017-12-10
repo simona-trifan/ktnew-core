@@ -56,3 +56,4 @@ $di->setShared('db', function () {
     return $connection;
 });
 
+$di->set('InsurantService', 'Insurant\\Services\\InsurantService');

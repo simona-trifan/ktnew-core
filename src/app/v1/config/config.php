@@ -4,15 +4,15 @@
  * NOTE: please remove this comment.
  */
 defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirname(__FILE__) . '/../..'));
-defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
+defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app/v1');
 
 return new \Phalcon\Config([
     'database' => [
         'adapter'    => 'Mysql',
         'host'       => 'localhost',
         'username'   => 'root',
-        'password'   => '',
-        'dbname'     => 'test',
+        'password'   => '1234',
+        'dbname'     => 'phalcon_ms_insurant',
         'charset'    => 'utf8',
     ],
 

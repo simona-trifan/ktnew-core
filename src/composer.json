@@ -1,7 +1,8 @@
 {
   "name": "p4b/ktnew-core",
   "require": {
-    "php": ">=5.00"
+    "php": ">=5.00",
+    "zircote/swagger-php": "^2.0"
   },
   "require-dev": {
     "phalcon/ide-stubs": "3.2.*",
